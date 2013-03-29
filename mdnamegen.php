@@ -40,7 +40,7 @@ class MDNameGen {
 	public static function getMicroTime() {
 		list($micro, $time) = explode(" ", microtime(false));
 		
-		return (int)$micro * 100000;
+		return (float)$micro * 1000000;
 	}
 }
 
