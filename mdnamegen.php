@@ -26,12 +26,14 @@ class MDNameGen {
 	 * @param String $hostname 
 	 * @return String Filename For Maildir
 	 */
-	public static function createMDName($timestamp = "", $hostname = "example.jp") {
+	public static function createMDName($timestamp = "", $hostname = "example.jp", $infoFlag = "") {
 		$timestamp = ($timestamp == "") ? time() : $timestamp;
 		$randomInt = rand(100000, 999999);
 		$microtime = ceil(microtime(true) * 1000);
 		
-		return $timestamp . ".R" . $randomInt . "M" . $microtime . "." . $hostname;
+		$filename = $timestamp . ".R" . $randomInt . "M" . $microtime . "." . $hostname;
+		
+		return ($infoFlag != "") ? $filename . ":2," . $infoFlag : $filename;
 	}
 }
 
