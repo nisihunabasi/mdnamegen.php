@@ -24,6 +24,7 @@ class MDNameGen {
 	 * 
 	 * @param int $timestamp UNIX Timestamp.
 	 * @param String $hostname 
+	 * @param String $infoFlag
 	 * @return String Filename For Maildir
 	 */
 	public static function createMDName($timestamp = "", $hostname = "example.jp", $infoFlag = "") {
