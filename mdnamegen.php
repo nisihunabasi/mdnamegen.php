@@ -30,11 +30,17 @@ class MDNameGen {
 	public static function createMDName($timestamp = "", $hostname = "example.jp", $infoFlag = "") {
 		$timestamp = ($timestamp == "") ? time() : $timestamp;
 		$randomInt = rand(100000, 999999);
-		$microtime = ceil(microtime(true) * 1000);
+		$microtime = MDNameGen::getMicroTime();
 		
 		$filename = $timestamp . ".R" . $randomInt . "M" . $microtime . "." . $hostname;
 		
 		return ($infoFlag != "") ? $filename . ":2," . $infoFlag : $filename;
+	}
+	
+	public static function getMicroTime() {
+		list($micro, $time) = explode(" ", microtime(false));
+		
+		return (int)$micro * 100000;
 	}
 }
 
